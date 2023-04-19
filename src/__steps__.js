@@ -11,3 +11,9 @@
  * 2. Inside provider access children pros and then use.
  * 
 */
+
+/**
+ * 1. Break down the create user function
+ * 2. auth provider will have auth and pass email and password form register
+ * 
+ * **/
