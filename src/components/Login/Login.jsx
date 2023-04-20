@@ -4,7 +4,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
 
-  const {userLogIn} = useContext(AuthContext)
+  const {userLogIn, signInWithGoogle} = useContext(AuthContext)
 
     const handleLogIn = (event) => {
         event.preventDefault();
@@ -17,6 +17,7 @@ const Login = () => {
         .then(result => {
           const loggedUser = result.user;
           console.log(loggedUser);
+          form.reset()
         })
         .catch(error => {
           console.log(error);
@@ -24,6 +25,19 @@ const Login = () => {
 
 
     }
+
+    const handleGoogleLogIn = ()=> {
+      signInWithGoogle()
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .then(error => {
+        console.log(error);
+      })
+    }
+
+
 
 
 
@@ -55,6 +69,7 @@ const Login = () => {
               </div>
             </form>
             <Link to='/register'><small className='ps-3'>Are you new here?<a className="btn btn-link">Register</a></small></Link>
+          <div><button onClick={handleGoogleLogIn} className='btn btn-primary w-full'>Google LogIN</button></div>
           </div>
         </div>
       </div>
